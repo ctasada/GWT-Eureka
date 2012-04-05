@@ -13,4 +13,8 @@ public interface EurekaCssResource extends CssResource {
 	String timePickerReadOnly();
 	
 	String timePickerReadOnlySmall();
+	
+	String badges();
+	
+	String iOSButton();
 }

@@ -1,6 +1,6 @@
 package com.blogspot.ctasada.gwt.eureka.client.ui;
 
-import com.blogspot.ctasada.gwt.eureka.client.StringUtils;
+import com.blogspot.ctasada.gwt.eureka.client.utils.StringUtils;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;

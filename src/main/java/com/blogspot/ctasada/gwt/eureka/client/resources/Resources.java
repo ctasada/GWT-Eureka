@@ -21,4 +21,7 @@ public interface Resources extends ClientBundle {
 
 	@Source("com/blogspot/ctasada/gwt/eureka/client/resources/images/buttons/button_PM_small.png")
 	ImageResource timePickerPMSmall();
+	
+	@Source("com/blogspot/ctasada/gwt/eureka/client/resources/images/gwtLogo.png")
+	ImageResource gwtLogo();
 }
