@@ -1,0 +1,36 @@
+/** Add css rules here for your application. */
+	/** Defines the default Font **/
+* {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, sans-serif;
+	font-size: 10pt;
+}
+
+body, table td, select {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, sans-serif;
+	font-size: 10pt;
+}
+
+*:focus {
+	outline: none;
+}
+
+.mainBackground {
+	background: #e4e4e4;
+	background: -moz-linear-gradient(top, #e4e4e4, #cfcfcf);
+	background: literal("-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e4e4e4), to(#cfcfcf))");
+}
+
+/** Defines the ToggleButtons **/
+.gwt-ToggleButton-up, 
+.gwt-ToggleButton-up-hovering, 
+.gwt-ToggleButton-up-disabled, 
+.gwt-ToggleButton-down, 
+.gwt-ToggleButton-down-hovering, 
+.gwt-ToggleButton-down-disabled {
+	background: none;
+	padding: 0px;
+	border: 0px;
+	opacity: 1;
+	zoom: 1;
+	filter: alpha(opacity=100);
+}
