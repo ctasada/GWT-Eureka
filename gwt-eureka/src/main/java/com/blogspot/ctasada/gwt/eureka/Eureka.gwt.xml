@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module rename-to='eureka'>
+<module>
 	<!-- Inherit the core Web Toolkit stuff. -->
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.user.UserAgent" />
@@ -12,18 +12,5 @@
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
 	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
 	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
-
-	<!-- Other module inherits -->
-
-	<stylesheet src='../Eureka.css' />
-
-	<set-configuration-property name="document.compatMode"
-		value="CSS1Compat" />
-
-	<!-- Specify the app entry point class. -->
-	<entry-point class='com.blogspot.ctasada.gwt.eureka.client.Eureka' />
-
-	<!-- Specify the paths for translatable code -->
-	<source path='client' />
 
 </module>

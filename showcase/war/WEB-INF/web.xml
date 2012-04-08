@@ -9,7 +9,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>TimePicker.html</welcome-file>
+    <welcome-file>Eureka.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
