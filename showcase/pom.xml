@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.blogspot.ctasada</groupId>
+	<artifactId>gwt-eureka-demo</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name>GWT-Eureka</name>
+	<packaging>war</packaging>
+
+	<properties>
+		<gwt.version>2.4.0</gwt.version>
+		<gwt-dnd.version>3.1.2</gwt-dnd.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.blogspot.ctasada</groupId>
+			<artifactId>gwt-eureka</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.allen-sauer.gwt.dnd</groupId>
+			<artifactId>gwt-dnd</artifactId>
+			<version>${gwt-dnd.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<webXml>${basedir}/war/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>2.4.0</version>
+				<configuration>
+					<copyWebapp>true</copyWebapp>
+					<runTarget>Eureka.html</runTarget>
+					<webXml>${basedir}/war/WEB-INF/web.xml</webXml>
+					<module>com.bradrydzewski.gwt.calendar.demo.Gwt_cal_demo</module>
+					<warSourceDirectory>${basedir}/war</warSourceDirectory>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/client/**</include>
+					<include>**/public/**</include>
+					<include>**/*.gwt.xml</include>
+					<include>**/*.gwt.xml</include>
+					<include>**/*.gif</include>
+					<include>**/*.png</include>
+					<include>**/*.css</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+</project>
