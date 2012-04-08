@@ -6,6 +6,14 @@ The main objective of this library is to include all those widgets and other hel
 
 Feel free to use it or contribute to it with your own tweaks.
 
+## gwt-eureka ##
+
+Contains the code of the library.
+
+## showcase ##
+
+Contains a simple showcase so you can quickly test the widgets.
+
 ## Contribution ##
 
 The library is available under GPLv3.
