@@ -14,6 +14,8 @@ Contains the code of the library.
 
 Contains a simple showcase so you can quickly test the widgets.
 
+You can test it here: http://gwt-eureka.appspot.com/
+
 ## Contribution ##
 
 The library is available under GPLv3.
