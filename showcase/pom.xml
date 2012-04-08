@@ -20,11 +20,6 @@
 			<artifactId>gwt-eureka</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.allen-sauer.gwt.dnd</groupId>
-			<artifactId>gwt-dnd</artifactId>
-			<version>${gwt-dnd.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>
