@@ -2,8 +2,9 @@ package com.blogspot.ctasada.gwt.eureka.client.ui;
 
 import java.util.Date;
 
-import com.blogspot.ctasada.gwt.eureka.client.resources.Resources;
+import com.blogspot.ctasada.gwt.eureka.theme.standard.client.ResourcesBundle;
 import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.client.ui.Image;
 
 /**
  * Same as the TimeBox, but uses different styles to show an smaller widget.
@@ -13,11 +14,11 @@ import com.google.gwt.resources.client.ImageResource;
  */
 public class SmallTimeBox extends TimeBox {
 
-	private static final String STYLE_TIMEPICKER = Resources.INSTANCE.css().timePicker();
-	private static final String STYLE_TIMEPICKER_ENTRY = Resources.INSTANCE.css().timePickerEntrySmall();
-	private static final String STYLE_TIMEPICKER_READONLY = Resources.INSTANCE.css().timePickerReadOnlySmall();
-	private static final ImageResource IMG_TIMEPICKER_AM = Resources.INSTANCE.timePickerAMSmall();
-	private static final ImageResource IMG_TIMEPICKER_PM = Resources.INSTANCE.timePickerPMSmall();
+	private static final String STYLE_TIMEPICKER = "timePicker";
+	private static final String STYLE_TIMEPICKER_ENTRY = "timePickerEntrySmall";
+	private static final String STYLE_TIMEPICKER_READONLY = "timePickerReadOnlySmall";
+	private static final ImageResource IMG_TIMEPICKER_AM = ResourcesBundle.INSTANCE.timePickerAMSmall();
+	private static final ImageResource IMG_TIMEPICKER_PM = ResourcesBundle.INSTANCE.timePickerPMSmall();
 	
 	public SmallTimeBox(Date time) {
 		this(time, false);
@@ -43,11 +44,11 @@ public class SmallTimeBox extends TimeBox {
 		return STYLE_TIMEPICKER_READONLY;
 	}
 
-	protected ImageResource getStyleTimePickerAM() {
-		return IMG_TIMEPICKER_AM;
+	protected Image getStyleTimePickerAM() {
+		return new Image(IMG_TIMEPICKER_AM);
 	}
 
-	protected ImageResource getStyleTimePickerPM() {
-		return IMG_TIMEPICKER_PM;
+	protected Image getStyleTimePickerPM() {
+		return new Image(IMG_TIMEPICKER_PM);
 	}
 }

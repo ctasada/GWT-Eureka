@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.blogspot.ctasada</groupId>
+	<groupId>com.blogspot.ctasada.gwt-eureka</groupId>
 	<artifactId>gwt-eureka-demo</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<name>GWT-Eureka</name>
@@ -11,12 +11,11 @@
 
 	<properties>
 		<gwt.version>2.4.0</gwt.version>
-		<gwt-dnd.version>3.1.2</gwt-dnd.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.blogspot.ctasada</groupId>
+			<groupId>com.blogspot.ctasada.gwt-eureka</groupId>
 			<artifactId>gwt-eureka</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -48,7 +47,7 @@
 					<copyWebapp>true</copyWebapp>
 					<runTarget>Eureka.html</runTarget>
 					<webXml>${basedir}/war/WEB-INF/web.xml</webXml>
-					<module>com.bradrydzewski.gwt.calendar.demo.Gwt_cal_demo</module>
+					<module>com.blogspot.ctasada.gwt-eureka.demo.Gwt_eureka.demo</module>
 					<warSourceDirectory>${basedir}/war</warSourceDirectory>
 				</configuration>
 				<dependencies>

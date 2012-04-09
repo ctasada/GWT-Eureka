@@ -9,7 +9,7 @@
 		<version>7</version>
 	</parent>
 
-	<groupId>com.blogspot.ctasada</groupId>
+	<groupId>com.blogspot.ctasada.gwt-eureka</groupId>
 	<artifactId>gwt-eureka</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -19,7 +19,6 @@
 
 	<properties>
 		<gwt.version>2.4.0</gwt.version>
-		<gwt-dnd.version>3.1.2</gwt-dnd.version>
 	</properties>
 
 	<licenses>
@@ -50,13 +49,13 @@
 	<!-- NOT ALLOWED: When using the Maven Central Repository -->
 	<scm>
 		<connection>
-	    scm:svn:http://gwt-cal.googlecode.com/svn/trunk
+	    scm:git:git@github.com:ctasada/GWT-Eureka.git
 	  </connection>
 		<developerConnection>
-	    scm:svn:https://gwt-cal.googlecode.com/svn/trunk
+	    scm:git:git@github.com:ctasada/GWT-Eureka.git
 	  </developerConnection>
 		<url>
-	    http://gwt-cal.googlecode.com/svn/trunk
+	    https://github.com/ctasada/GWT-Eureka
 	  </url>
 	</scm>
 
@@ -82,11 +81,6 @@
 						<groupId>com.google.gwt</groupId>
 						<artifactId>gwt-user</artifactId>
 						<version>${gwt.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>com.allen-sauer.gwt.dnd</groupId>
-						<artifactId>gwt-dnd</artifactId>
-						<version>${gwt-dnd.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -117,11 +111,6 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.allen-sauer.gwt.dnd</groupId>
-			<artifactId>gwt-dnd</artifactId>
-			<version>${gwt-dnd.version}</version>
 		</dependency>
 	</dependencies>
 </project>

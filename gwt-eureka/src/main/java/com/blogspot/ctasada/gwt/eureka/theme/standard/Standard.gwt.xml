@@ -1,0 +1,4 @@
+<!-- Includes the source files for the Standard theme. -->
+<module>
+      <stylesheet src="standard.css"/>
+</module>

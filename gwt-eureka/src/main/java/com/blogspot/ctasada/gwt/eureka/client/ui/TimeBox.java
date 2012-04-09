@@ -2,7 +2,7 @@ package com.blogspot.ctasada.gwt.eureka.client.ui;
 
 import java.util.Date;
 
-import com.blogspot.ctasada.gwt.eureka.client.resources.Resources;
+import com.blogspot.ctasada.gwt.eureka.theme.standard.client.ResourcesBundle;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.BlurEvent;
@@ -47,12 +47,12 @@ public class TimeBox extends Composite implements
 		HasValueChangeHandlers<Long>, HasValue<Long>, HasBlurHandlers,
 		Focusable {
 
-	private static final String STYLE_TIMEPICKER = Resources.INSTANCE.css().timePicker();
-	private static final String STYLE_TIMEPICKER_ENTRY = Resources.INSTANCE.css().timePickerEntry();
-	private static final String STYLE_TIMEPICKER_READONLY = Resources.INSTANCE.css().timePickerReadOnly();
-	private static final ImageResource IMG_TIMEPICKER_AM = Resources.INSTANCE.timePickerAM();
-	private static final ImageResource IMG_TIMEPICKER_PM = Resources.INSTANCE.timePickerPM();
-		
+	private static final String STYLE_TIMEPICKER = "timePicker";
+	private static final String STYLE_TIMEPICKER_ENTRY = "timePickerEntry";
+	private static final String STYLE_TIMEPICKER_READONLY = "timePickerReadOnly";
+	private static final ImageResource IMG_TIMEPICKER_AM = ResourcesBundle.INSTANCE.timePickerAM();
+	private static final ImageResource IMG_TIMEPICKER_PM = ResourcesBundle.INSTANCE.timePickerPM();
+	
 	/**
 	 * Defines the possible precisions when comparing hours.
 	 */
@@ -145,7 +145,7 @@ public class TimeBox extends Composite implements
 		timePanel.add(separator);
 		timePanel.add(minutesBox);
 
-		ampmButton = new ToggleButton(new Image(getStyleTimePickerAM()), new Image(getStyleTimePickerPM()));
+		ampmButton = new ToggleButton(getStyleTimePickerAM(), getStyleTimePickerPM());
 		if (useAMPM) {
 			timePanel.add(ampmButton);
 			ampmButton.addClickHandler(new ClickHandler() {
@@ -535,11 +535,11 @@ public class TimeBox extends Composite implements
 		return STYLE_TIMEPICKER_READONLY;
 	}
 
-	protected ImageResource getStyleTimePickerAM() {
-		return IMG_TIMEPICKER_AM;
+	protected Image getStyleTimePickerAM() {
+		return new Image(IMG_TIMEPICKER_AM);
 	}
 
-	protected ImageResource getStyleTimePickerPM() {
-		return IMG_TIMEPICKER_PM;
+	protected Image getStyleTimePickerPM() {
+		return new Image(IMG_TIMEPICKER_PM);
 	}
 }

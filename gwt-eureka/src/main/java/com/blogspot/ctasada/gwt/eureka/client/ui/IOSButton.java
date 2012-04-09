@@ -1,6 +1,5 @@
 package com.blogspot.ctasada.gwt.eureka.client.ui;
 
-import com.blogspot.ctasada.gwt.eureka.client.resources.Resources;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -18,8 +17,8 @@ public class IOSButton extends Composite implements HasClickHandlers,
 	private final PushButton pushButton;
 	private final Label badge;
 
-	private static final String STYLE_BADGES = Resources.INSTANCE.css().badges();
-	private static final String STYLE_IOSBUTTON = Resources.INSTANCE.css().iOSButton();
+	private static final String STYLE_IOSBUTTON = "iOSButton";
+	private static final String STYLE_BADGES = "iOSButton-badge";
 	
 	public IOSButton(Image buttonIcon) {
 		wrapper = new AbsolutePanel();
