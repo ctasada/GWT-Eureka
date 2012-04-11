@@ -2,17 +2,21 @@ package com.blogspot.ctasada.gwt.eureka.demo.client;
 
 import java.util.Date;
 
-import com.blogspot.ctasada.gwt.eureka.demo.client.resources.Resources;
 import com.blogspot.ctasada.gwt.eureka.client.ui.IOSButton;
 import com.blogspot.ctasada.gwt.eureka.client.ui.SmallTimeBox;
 import com.blogspot.ctasada.gwt.eureka.client.ui.TimeBox;
+import com.blogspot.ctasada.gwt.eureka.demo.client.resources.Resources;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.StackLayoutPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
@@ -23,35 +27,59 @@ public class Eureka implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		HorizontalPanel hPanel = new HorizontalPanel();
-		hPanel.addStyleName("mainBackground");
-		hPanel.setWidth("500px");
-		hPanel.setHeight("300px");
-		hPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		hPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		DockPanel dock = new DockPanel();
+		dock.addStyleName("mainBackground");
+		dock.setWidth("700px");
+		dock.setHeight("300px");
+		dock.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		dock.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+		
+		dock.add(createHeader(), DockPanel.NORTH);
+		
+		//StackLayoutPanel stackPanel = new StackLayoutPanel(Unit.EM);
 		
 		// Time Picker Examples
-		VerticalPanel vTimePicker = createTimePicker();
-		hPanel.add(vTimePicker);
-		
+		dock.add(createTimePicker(), DockPanel.WEST);
 		// Time Picker Small Examples
-		VerticalPanel vSmallTimePicker = createSmallTimePicker();
-		hPanel.add(vSmallTimePicker);
-
+		dock.add(createSmallTimePicker(), DockPanel.WEST);
 		// iOSButton Examples
-		VerticalPanel vIOSButton = createIOSButton();
-		hPanel.add(vIOSButton);
+		dock.add(createIOSButton(), DockPanel.WEST);
 		
-		RootPanel.get().add(hPanel);
+		RootPanel.get().add(dock);
+	}
+	
+	private HorizontalPanel createHeader() {
+		HorizontalPanel hPanel = new HorizontalPanel();
+		hPanel.setWidth("100%");
+		hPanel.setHeight("80px");
+		hPanel.setStyleName("headerBackground");
+		
+		Label title = new Label("GWT-Eureka Library");
+		title.setStyleName("headerFont");
+		Label subtitle = new Label("Widgets Demo");
+		subtitle.setStyleName("subheaderFont");
+		
+		VerticalPanel vPanel = new VerticalPanel();
+		vPanel.add(title);
+		vPanel.add(subtitle);
+		
+		Anchor link = new Anchor("GWT-Eureka Homepage", "https://github.com/ctasada/GWT-Eureka");
+		
+		hPanel.add(vPanel);
+		hPanel.add(link);
+		hPanel.setSpacing(20);
+		
+		return hPanel;
 	}
 	
 	private VerticalPanel getNewVerticalPanel(String label) {
 		VerticalPanel vPanel = new VerticalPanel();
-		vPanel.addStyleName("mainBackground");
+		//vPanel.addStyleName("mainBackground");
 		vPanel.setWidth("100%");
 		vPanel.setHeight("100%");
 		vPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		vPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+		vPanel.setSpacing(12);
 
 		vPanel.add(new Label(label));
 

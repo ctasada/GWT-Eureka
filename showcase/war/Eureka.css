@@ -15,9 +15,30 @@ body, table td, select {
 }
 
 .mainBackground {
-	background: #e4e4e4;
-	background: -moz-linear-gradient(top, #e4e4e4, #cfcfcf);
-	background: literal("-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e4e4e4), to(#cfcfcf))");
+	background-image: -webkit-linear-gradient(top, #e4e4e4, #cfcfcf);
+	background-image: -moz-linear-gradient(top, #e4e4e4, #cfcfcf);
+	background-image: -ms-linear-gradient(top, #e4e4e4, #cfcfcf);
+	background-image: -o-linear-gradient(top, #e4e4e4, #cfcfcf);
+	background-image: linear-gradient(top, #e4e4e4, #cfcfcf);
+}
+
+.headerBackground {
+	background: white;
+}
+
+.headerFont {
+	background: white;
+	font-size: 20pt;
+	font-weight: bold;
+	color: #7B8FAE;
+	text-shadow: #DDD 3px 3px 1px
+}
+
+.subheaderFont {
+	background: white;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #888888;
 }
 
 /** Defines the ToggleButtons **/
