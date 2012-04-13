@@ -14,8 +14,8 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>GWT-Eureka</name>
-	<description></description>
-	<url>http://gwt-eureka.appspot.com/</url>
+	<description>A widgets library for GWT</description>
+	<url>https://github.com/ctasada/GWT-Eureka</url>
 
 	<properties>
 		<gwt.version>2.4.0</gwt.version>
@@ -25,14 +25,13 @@
 		<license>
 			<name>Apache 2</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
 
 	<issueManagement>
 		<system>Google Code</system>
-		<url>http://code.google.com/p/gwt-cal/issues</url>
+		<url>https://github.com/ctasada/GWT-Eureka/issues</url>
 	</issueManagement>
 
 	<developers>
@@ -77,6 +76,13 @@
 				<configuration>
 					<module>com.blogspot.ctasada.gwt.eureka.Eureka</module>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>com.google.gwt</groupId>
@@ -84,6 +90,15 @@
 						<version>${gwt.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<!-- We need to exclude this package for the javadoc to be properly generated -->
+					<excludePackageNames>com.google.gwt.*</excludePackageNames>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
@@ -102,12 +117,6 @@
 		</resources>
 	</build>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
