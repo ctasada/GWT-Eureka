@@ -202,9 +202,9 @@ public class TimeBox extends Composite implements
 				if (stepKey || (oldHour != hour)) {
 					if (stepKey) {
 						hour = timeValue.getHours();
-						if (hour > 12 && isUseAMPM()) {
-							hour -= 12;
-						}
+					}
+					if (hour > 12 && isUseAMPM()) {
+						hour -= 12;
 					}
 
 					hoursBox.setValue(String.valueOf(hour), false);
@@ -293,37 +293,35 @@ public class TimeBox extends Composite implements
 				fireBlurEvent();
 			}
 		});
-		// FIXME: Hack to solve some IE6 issues
-		if (Window.Navigator.getUserAgent().contains("MSIE")) {
-			// Trying to force that the whole value is selected when receiving the focus
-			hoursBox.addFocusHandler(new FocusHandler() {
-				@Override
-				public void onFocus(FocusEvent event) {
-				    hoursBox.setFocus(true);
-				    hoursBox.selectAll();
-				}
-			});
-			minutesBox.addFocusHandler(new FocusHandler() {
-				@Override
-				public void onFocus(FocusEvent event) {
-				    minutesBox.setFocus(true);
-					minutesBox.selectAll();
-				}
-			});
-			// Making sure the cursor is always in the last position so the editing works as expected
-			hoursBox.addValueChangeHandler(new ValueChangeHandler<String>() {
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) {
-					hoursBox.setCursorPos(hoursBox.getText().length());
-				}
-			});
-			minutesBox.addValueChangeHandler(new ValueChangeHandler<String>() {
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) {
-					minutesBox.setCursorPos(minutesBox.getText().length());
-				}
-			});
-		}
+		
+		// Trying to force that the whole value is selected when receiving the focus
+		hoursBox.addFocusHandler(new FocusHandler() {
+			@Override
+			public void onFocus(FocusEvent event) {
+			    hoursBox.setFocus(true);
+			    hoursBox.selectAll();
+			}
+		});
+		minutesBox.addFocusHandler(new FocusHandler() {
+			@Override
+			public void onFocus(FocusEvent event) {
+			    minutesBox.setFocus(true);
+				minutesBox.selectAll();
+			}
+		});
+		// Making sure the cursor is always in the last position so the editing works as expected
+		hoursBox.addValueChangeHandler(new ValueChangeHandler<String>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<String> event) {
+				hoursBox.setCursorPos(hoursBox.getText().length());
+			}
+		});
+		minutesBox.addValueChangeHandler(new ValueChangeHandler<String>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<String> event) {
+				minutesBox.setCursorPos(minutesBox.getText().length());
+			}
+		});
 	}
 
 	private boolean isUseAMPM() {
