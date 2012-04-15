@@ -15,26 +15,23 @@
  */
 package com.google.gwt.user.datepicker.client;
 
+import java.util.Date;
+
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
 import com.google.gwt.user.datepicker.client.DefaultCalendarView.CellGrid.DateCell;
 
-import java.util.Date;
-
 /**
  * Simple calendar view. Not extensible as we wish to evolve it freely over
  * time.
  * 
- * TODO: Needs to be kept in sync with original Google class. FIXME: Overload
- * Constructor and whole class just to configure the first day of the week :(
+ * TODO: Needs to be kept in sync with original Google class. 
+ * FIXME: Overload Constructor and whole class just to configure the days should be disabled :(
  */
 
 @SuppressWarnings(/* Date manipulation required */{"deprecation"})
 public final class DefaultCalendarView extends CalendarView {
-	
-	public static final int MILLIS_IN_A_SECOND = 1000;
-	public static final long MILLIS_IN_A_DAY = MILLIS_IN_A_SECOND * 60 * 60 * 24;
 
   /**
    * Cell grid.
@@ -92,8 +89,8 @@ public final class DefaultCalendarView extends CalendarView {
       }
 
       public void update(Date current) {
-				// * Another Tweak *//
-				setEnabled(getDatePicker().isDateEnabled(current));
+		// * Another Tweak *//
+		setEnabled(getDatePicker().isDateEnabled(current));
         getValue().setTime(current.getTime());
         String value = getModel().formatDayOfMonth(getValue());
         setText(value);
@@ -149,7 +146,6 @@ public final class DefaultCalendarView extends CalendarView {
 
   private Date lastDisplayed = new Date();
 
-	private int firstDayofWeek = 1;
 	private Date minDate = null;
 	private Date maxDate = null;
 
@@ -159,20 +155,16 @@ public final class DefaultCalendarView extends CalendarView {
 	public DefaultCalendarView() {
 	}
 
-	// FIXME: Overload Constructor and whole class just to configure the first
-	// day of the week :(
+	// FIXME: Overload Constructor and whole class just to configure the days should be disabled :(
 	/**
 	 * Constructor.
 	 * 
-	 * @param firstDayofWeek
-	 *            First Day of the Week (0 - Sunday, 1 - Monday, ...).
 	 * @param minDate
 	 *            Minimum allowed date.
 	 * @param maxDate
 	 *            Maximum allowed date.
 	 */
-	public DefaultCalendarView(int firstDayofWeek, Date minDate, Date maxDate) {
-		this.firstDayofWeek = firstDayofWeek;
+	public DefaultCalendarView(Date minDate, Date maxDate) {
 		this.minDate = minDate;
 		this.maxDate = maxDate;
 	}
@@ -206,11 +198,6 @@ public final class DefaultCalendarView extends CalendarView {
 	@Override
 	public void refresh() {
 		firstDisplayed = getModel().getCurrentFirstDayOfFirstWeek();
-		// //* Here is my change *////
-		if (firstDisplayed.getDay() != firstDayofWeek) {
-			firstDisplayed = new Date(firstDisplayed.getTime()
-					+ (firstDayofWeek * MILLIS_IN_A_DAY));
-		}
 
 		if ((firstDisplayed.getDate() > 1) && (firstDisplayed.getDate() < 7)) {
 			// show one empty week if date is Monday is the first in month.
@@ -245,16 +232,12 @@ public final class DefaultCalendarView extends CalendarView {
     int weekendStartColumn = -1;
     int weekendEndColumn = -1;
 
-		// Set up the day labels.
-		for (int i = 0; i < CalendarModel.DAYS_IN_WEEK; i++) {
-			int shift = CalendarUtil.getStartingDayOfWeek();
-			// //* Here is my change *////
-			shift += firstDayofWeek;
-			int dayIdx = i + shift;
-			if (i + shift >= CalendarModel.DAYS_IN_WEEK) {
-				dayIdx = i + shift - CalendarModel.DAYS_IN_WEEK;
-			}
-			grid.setText(0, i, getModel().formatDayOfWeek(dayIdx));
+    // Set up the day labels.
+    for (int i = 0; i < CalendarModel.DAYS_IN_WEEK; i++) {
+      int shift = CalendarUtil.getStartingDayOfWeek();
+      int dayIdx = i + shift < CalendarModel.DAYS_IN_WEEK ? i + shift : i
+          + shift - CalendarModel.DAYS_IN_WEEK;
+      grid.setText(0, i, getModel().formatDayOfWeek(dayIdx));
 
       if (CalendarUtil.isWeekend(dayIdx)) {
         formatter.setStyleName(0, i, css().weekendLabel());
