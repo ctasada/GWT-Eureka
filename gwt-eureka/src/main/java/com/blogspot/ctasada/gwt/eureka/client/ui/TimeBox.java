@@ -15,13 +15,14 @@ import com.google.gwt.event.dom.client.HasBlurHandlers;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.MouseWheelEvent;
+import com.google.gwt.event.dom.client.MouseWheelHandler;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.HasValue;
@@ -199,35 +200,19 @@ public class TimeBox extends Composite implements
 					timeValue.setHours(timeValue.getHours() - 1);
 					break;
 				}
-				if (stepKey || (oldHour != hour)) {
-					if (stepKey) {
-						hour = timeValue.getHours();
-					}
-					if (hour > 12 && isUseAMPM()) {
-						hour -= 12;
-					}
-
-					hoursBox.setValue(String.valueOf(hour), false);
-					int minutes = Integer.parseInt(minutesBox.getValue());
-
-					if (!stepKey) {
-						Date tmpValue = (Date)timeValue.clone();
-						
-						timeValue.setHours(hour);
-						timeValue.setMinutes(minutes);
-						
-						if (isUseAMPM()) {
-							// In AM/PM if was PM keep it. This case only happens when typing the number
-							if (tmpValue.getHours() >= 12) {
-								timeValue.setTime(timeValue.getTime() + (12 * ONE_HOUR));	
-							}
-						}
-					}
-
-					fireValueChange();
-					
-					updateAMPM();
+				updateTimeValue(stepKey, oldHour, hour);
+			}
+		});
+		hoursBox.addMouseWheelHandler(new MouseWheelHandler() {
+			public void onMouseWheel(MouseWheelEvent event) {
+				int hour = Integer.parseInt(hoursBox.getValue());
+				int oldHour = timeValue.getHours();
+				if (event.isNorth()) {
+					timeValue.setHours(timeValue.getHours() + 1);
+				} else {
+					timeValue.setHours(timeValue.getHours() - 1);
 				}
+				updateTimeValue(true, oldHour, hour);
 			}
 		});
 		hoursBox.addBlurHandler(new BlurHandler() {
@@ -287,6 +272,15 @@ public class TimeBox extends Composite implements
 				}
 			}
 		});
+		minutesBox.addMouseWheelHandler(new MouseWheelHandler() {
+			public void onMouseWheel(MouseWheelEvent event) {
+				if (event.isNorth()) {
+					increaseValue();
+				} else {
+					decreaseValue();
+				}
+			}
+		});
 		minutesBox.addBlurHandler(new BlurHandler() {
 			@Override
 			public void onBlur(BlurEvent event) {
@@ -324,6 +318,38 @@ public class TimeBox extends Composite implements
 		});
 	}
 
+	private void updateTimeValue(boolean stepKey, int oldHour, int hour) {
+		if (stepKey || (oldHour != hour)) {
+			if (stepKey) {
+				hour = timeValue.getHours();
+			}
+			if (hour > 12 && isUseAMPM()) {
+				hour -= 12;
+			}
+
+			hoursBox.setValue(String.valueOf(hour), false);
+			int minutes = Integer.parseInt(minutesBox.getValue());
+
+			if (!stepKey) {
+				Date tmpValue = (Date)timeValue.clone();
+				
+				timeValue.setHours(hour);
+				timeValue.setMinutes(minutes);
+				
+				if (isUseAMPM()) {
+					// In AM/PM if was PM keep it. This case only happens when typing the number
+					if (tmpValue.getHours() >= 12) {
+						timeValue.setTime(timeValue.getTime() + (12 * ONE_HOUR));	
+					}
+				}
+			}
+
+			fireValueChange();
+			
+			updateAMPM();
+		}
+	}
+	
 	private boolean isUseAMPM() {
 		return useAMPM;
 	}
