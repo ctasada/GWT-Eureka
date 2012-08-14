@@ -74,8 +74,10 @@
 	background: #ff3333;
 	border: 2px solid white;
 	padding: 0px 5px;
+	border-radius: 15px;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
@@ -83,8 +85,10 @@
 .iOSButton {
 	cursor: pointer;
 	border: 1px solid black;
+	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	background: #00b5e2;
