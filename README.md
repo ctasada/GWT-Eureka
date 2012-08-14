@@ -18,4 +18,4 @@ You can test it here: http://gwt-eureka.appspot.com/
 
 ## Contribution ##
 
-The library is available under GPLv3.
+The library is available under the Apache 2.0 License.
