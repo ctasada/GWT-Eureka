@@ -5,9 +5,13 @@
 
 	<groupId>com.blogspot.ctasada.gwt-eureka</groupId>
 	<artifactId>gwt-eureka-demo</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 	<name>GWT-Eureka</name>
 	<packaging>war</packaging>
+
+	<prerequisites>
+		<maven>2.2.1</maven>
+	</prerequisites>
 
 	<properties>
 		<gwt.version>2.4.0</gwt.version>
@@ -19,13 +23,19 @@
 			<artifactId>gwt-eureka</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
+				<version>2.5.1</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -34,7 +44,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
+				<version>2.2</version>
 				<configuration>
 					<webXml>${basedir}/war/WEB-INF/web.xml</webXml>
 				</configuration>
@@ -58,6 +68,19 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<buildOutputDirectory>${basedir}/war/WEB-INF/classes</buildOutputDirectory>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+					</additionalProjectnatures>
+				</configuration>
+			</plugin>  
 		</plugins>
 		<resources>
 			<resource>

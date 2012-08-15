@@ -21,7 +21,6 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.datepicker.client.DatePicker;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -152,6 +151,7 @@ public class Eureka implements EntryPoint {
 		return vPanel;
 	}
 
+	@SuppressWarnings("deprecation")
 	private VerticalPanel createDatePicker() {
 		VerticalPanel vPanel = getNewVerticalPanel("DatePicker Examples");
 		final Label text = new Label();
