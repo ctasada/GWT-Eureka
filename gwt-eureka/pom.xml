@@ -10,7 +10,7 @@
 
 	<groupId>com.blogspot.ctasada.gwt-eureka</groupId>
 	<artifactId>gwt-eureka</artifactId>
-	<version>0.2</version>
+	<version>0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>GWT-Eureka</name>
 	<description>A widgets library for GWT</description>
