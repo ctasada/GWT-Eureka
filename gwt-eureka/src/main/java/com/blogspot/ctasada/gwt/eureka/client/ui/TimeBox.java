@@ -369,37 +369,34 @@ public class TimeBox extends Composite implements
 	}
 
 	public void increaseValue(boolean fireEvents) {
-		//if (timeValue < 24.0) {
-		if (timeValue.getHours() < 24) {
-			int hours = timeValue.getHours();
-			int oldHours = hours;
+		int hours = timeValue.getHours();
+		int oldHours = hours;
 
-			int minutes = timeValue.getMinutes();
-			int oldMinutes = minutes;
+		int minutes = timeValue.getMinutes();
+		int oldMinutes = minutes;
 
-			if (minutesSteps == 15) {
-				if (minutes < 15) {
-					minutes = 15;
-				} else if (minutes < 30) {
-					minutes = 30;
-				} else if (minutes < 45) {
-					minutes = 45;
-				} else {
-					minutes = 0;
-					hours++;
-					if (hours > 23) {
-						hours = 0;
-					}
-				}
+		if (minutesSteps == 15) {
+			if (minutes < 15) {
+				minutes = 15;
+			} else if (minutes < 30) {
+				minutes = 30;
+			} else if (minutes < 45) {
+				minutes = 45;
 			} else {
-				minutes++;
+				minutes = 0;
+				hours++;
+				if (hours > 23) {
+					hours = 0;
+				}
 			}
+		} else {
+			minutes++;
+		}
 
-			if ((oldMinutes != minutes) || (oldHours != hours)) {
-				timeValue.setHours(hours);
-				timeValue.setMinutes(minutes);
-				setValue(timeValue.getTime(), fireEvents);
-			}
+		if ((oldMinutes != minutes) || (oldHours != hours)) {
+			timeValue.setHours(hours);
+			timeValue.setMinutes(minutes);
+			setValue(timeValue.getTime(), fireEvents);
 		}
 	}
 
@@ -408,36 +405,34 @@ public class TimeBox extends Composite implements
 	}
 
 	public void decreaseValue(boolean fireEvents) {
-		if (timeValue.getHours() > 0.0) {
-			int hours = timeValue.getHours();
-			int oldHours = hours;
+		int hours = timeValue.getHours();
+		int oldHours = hours;
 
-			int minutes = timeValue.getMinutes();
-			int oldMinutes = minutes;
+		int minutes = timeValue.getMinutes();
+		int oldMinutes = minutes;
 
-			if (minutesSteps == 15) {
-				if (minutes >= 45) {
-					minutes = 30;
-				} else if (minutes >= 30) {
-					minutes = 15;
-				} else if (minutes >= 15) {
-					minutes = 0;
-				} else {
-					minutes = 45;
-					hours--;
-					if (hours < 0) {
-						hours = 23;
-					}
-				}
+		if (minutesSteps == 15) {
+			if (minutes >= 45) {
+				minutes = 30;
+			} else if (minutes >= 30) {
+				minutes = 15;
+			} else if (minutes >= 15) {
+				minutes = 0;
 			} else {
-				minutes--;
+				minutes = 45;
+				hours--;
+				if (hours < 0) {
+					hours = 23;
+				}
 			}
+		} else {
+			minutes--;
+		}
 
-			if ((oldMinutes != minutes) || (oldHours != hours)) {
-				timeValue.setHours(hours);
-				timeValue.setMinutes(minutes);
-				setValue(timeValue.getTime(), fireEvents);
-			}
+		if ((oldMinutes != minutes) || (oldHours != hours)) {
+			timeValue.setHours(hours);
+			timeValue.setMinutes(minutes);
+			setValue(timeValue.getTime(), fireEvents);
 		}
 	}
 
