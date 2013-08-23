@@ -213,6 +213,7 @@ public class TimeBox extends Composite implements
 					timeValue.setHours(timeValue.getHours() - 1);
 				}
 				updateTimeValue(true, oldHour, hour);
+				event.preventDefault();
 			}
 		});
 		hoursBox.addBlurHandler(new BlurHandler() {
@@ -279,6 +280,7 @@ public class TimeBox extends Composite implements
 				} else {
 					decreaseValue();
 				}
+                event.preventDefault();
 			}
 		});
 		minutesBox.addBlurHandler(new BlurHandler() {
